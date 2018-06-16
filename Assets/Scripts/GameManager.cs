@@ -9,17 +9,13 @@ public class GameManager : MonoBehaviour {
 
     public static int MaxScore = 10;
 
-	public Player player1;
-	public Player player2;
+    public Player player1;
+    public Player player2;
+    [HideInInspector] public Player activePlayer; // dynamic, either player1 or player2
+    public bool playerCanPlay; // false between player turns
 
-    public bool playerCanPlay;
-
-	[HideInInspector] public Player activePlayer;
-
-    [HideInInspector] public int round;
-    [HideInInspector] public Global.Season roundSeason;
-
-    [HideInInspector] public bool gameStarted = false;
+    [HideInInspector] public int round; 
+    [HideInInspector] public Global.Season roundSeason; 
 
     public Text roundText;
     public Text seasonText;
@@ -43,17 +39,21 @@ public class GameManager : MonoBehaviour {
         player2.gameScore = 0;
         UpdateGameScoresText();
 
-        gameStarted = true;
         playerCanPlay = false;
         round = 1;
         StartRound(round, keepRoundScores: false);
     }
 
-    Text fruitNameSpot(FruitSpot fruitSpot) {
+    /** 
+     * Correspondance between fruit spot (2D game object) 
+     * and its name in the canvas (UI)
+     */
+    Text fruitNameSpot(FruitSpot fruitSpot)
+    {
         return fruitNameSpots[System.Array.IndexOf(fruitSpots, fruitSpot)];
     }
 
-    public string activePlayerNumber() {
+    public string activePlayerNumber() { // for UI
         if(activePlayer == player1) {
             return "1";
         } else if (activePlayer == player2) {
@@ -64,16 +64,13 @@ public class GameManager : MonoBehaviour {
     }
 
     public Player otherPlayer(Player p) {
-        if (p == player1)
-        {
+        if (p == player1) {
             return player2;
         }
-        else if (p == player2)
-        {
+        else if (p == player2) {
             return player1;
         }
-        else
-        {
+        else {
             Debug.LogError("player " + p);
             return null;
         }
@@ -85,7 +82,6 @@ public class GameManager : MonoBehaviour {
 
         Player op = otherPlayer(p);
         op.transform.localScale = op.initialScale;
-
     }
 
     public Text gameScoreTextForPlayer(Player p)
@@ -112,6 +108,11 @@ public class GameManager : MonoBehaviour {
         gameScorePlayer2.text = string.Format("{0}", player2.gameScore);
     }
 
+    /**
+     * When the last move was a succesful "NoFruit" answer, 
+     * we keep the scores of this round and cumulate them for the next round!
+     * (In this case keepRoundScores is true)
+     */ 
     public void StartRound(int roundNumber, bool keepRoundScores) {
 
         if(keepRoundScores && activePlayer != null) {
@@ -143,7 +144,6 @@ public class GameManager : MonoBehaviour {
             }
             fruitSpot.fruitsLeft = 3;
             refillFruitSpot(fruitSpot);
-
         }
 
         CommentatorText(new string[] {
@@ -195,8 +195,10 @@ public class GameManager : MonoBehaviour {
         if(matchingFruitSpots.Count > 0) {
             // Wrong answer! some fruits could have been picked
 
+            Global.s.sounds.boo.Play();
+
             CommentatorText(new string[]{
-                string.Format("Mauvaise réponse! Le {0} est de saison en {1}.",
+                string.Format("Mauvaise réponse! {0} est de saison en {1}.",
                               Global.FruitName(matchingFruitSpots[0].currentFruit.fruitType),
                               Global.SeasonName(roundSeason))
             });
@@ -233,8 +235,10 @@ public class GameManager : MonoBehaviour {
                 StartCoroutine(EndRound(null, keepRoundScores: false));
             }
         } else {
-            
+
             // Correct answer! Start next round but keep scores!
+
+            Global.s.sounds.cheer.Play();
 
             CommentatorText(new string[]{
                 string.Format("Bonne réponse! Aucun des fruits n'est de saison en {0}",
@@ -281,6 +285,8 @@ public class GameManager : MonoBehaviour {
         if (Global.IsFruitInSeason(fruitGO.fruitType, roundSeason)) {
             // Correct answer! Simply end this player's turn (round and game continue)
 
+            Global.s.sounds.cheer.Play();
+
             activePlayer.roundScore += 1;
 
             iTween.MoveTo(activePlayer.gameObject, iTween.Hash(
@@ -310,6 +316,7 @@ public class GameManager : MonoBehaviour {
         else {
             // Wrong answer !
 
+            Global.s.sounds.boo.Play();
 
             CommentatorText(new string[]{
                 string.Format("Mauvaise réponse! La saison du {0} est en {1}",
