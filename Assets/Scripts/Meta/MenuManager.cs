@@ -19,9 +19,15 @@ public class MenuManager : MonoBehaviour {
             "alpha", 0f, "time", 1.5f, 
             "easetype", iTween.EaseType.easeInQuad, 
             "looptype", iTween.LoopType.pingPong));
-        
+
 	}
-	
+
+    void Update()
+    {
+        if (Input.GetKeyDown("escape"))
+            Application.Quit();
+
+    }
 
 
 }

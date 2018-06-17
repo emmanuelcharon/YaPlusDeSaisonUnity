@@ -234,7 +234,7 @@ public class GameManager : MonoBehaviour {
             Global.s.sounds.boo.Play();
 
             CommentatorText(new string[]{
-                string.Format("Mauvaise réponse! {0} se mange en {1}.",
+                string.Format("Mauvaise reponse! {0} se mange en {1}.",
                               Global.FruitName(matchingFruitSpots[0].currentFruit.fruitType),
                               Global.SeasonName(roundSeason))
             });
@@ -278,8 +278,8 @@ public class GameManager : MonoBehaviour {
             Global.s.sounds.cheer.Play();
 
             CommentatorText(new string[]{
-                string.Format("Bonne réponse!")
-                //string.Format("Bonne réponse! Aucun des fruits n'est de saison en {0}",Global.SeasonName(roundSeason))
+                string.Format("Bonne reponse!")
+                //string.Format("Bonne reponse! Aucun des fruits n'est de saison en {0}",Global.SeasonName(roundSeason))
             });
             yield return new WaitForSeconds(1f);
 
@@ -349,8 +349,8 @@ public class GameManager : MonoBehaviour {
             setActivePlayer(otherPlayer(activePlayer));
 
             CommentatorText(new string[] {
-                string.Format("Bonne réponse!")
-                //string.Format("Bonne réponse! Au tour du joueur {0}", activePlayerNumber())
+                string.Format("Bonne reponse!")
+                //string.Format("Bonne reponse! Au tour du joueur {0}", activePlayerNumber())
             });
             yield return new WaitForSeconds(1f);
 
@@ -364,7 +364,7 @@ public class GameManager : MonoBehaviour {
             Global.s.sounds.boo.Play();
 
             CommentatorText(new string[]{
-                string.Format("Mauvaise réponse! {0} se mange en {1}",
+                string.Format("Mauvaise reponse! {0} se mange en {1}",
                               Global.FruitName(fruitGO.fruitType),
                               Global.SeasonName(Global.SeasonForFruit(fruitGO.fruitType)))
             });
@@ -432,8 +432,9 @@ public class GameManager : MonoBehaviour {
 
 
         CommentatorText(new string[] {
-            string.Format("Le vainqueur est le joueur {0}, avec un score de {1} à {2}!",
-            winner == player1 ? "1" : "2",
+            string.Format("Victoire pour {0} avec un score de {1} à {2}",
+                          
+            winner == player1 ? "Alice" : "Bob",
             winner.gameScore, otherPlayer(winner).gameScore),
         }, duration: 5f);
         yield return new WaitForSeconds(6f);
@@ -460,7 +461,7 @@ public class GameManager : MonoBehaviour {
         commentatorModal.mainText.text = texts[0];
 
         iTween.FadeTo(commentatorModal.gameObject, iTween.Hash(
-            "alpha", 1f, "time", 0.5f, "easetype", iTween.EaseType.easeInQuad));
+            "alpha", 0.9f, "time", 0.5f, "easetype", iTween.EaseType.easeInQuad));
 
 
         foreach (string text in texts) {
@@ -473,6 +474,13 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(0.5f);
     }
 
+
+    void Update()
+    {
+        if (Input.GetKeyDown("escape"))
+            SceneManager.LoadScene(Global.SceneIndex_Menu);
+
+    }
 
 
 }

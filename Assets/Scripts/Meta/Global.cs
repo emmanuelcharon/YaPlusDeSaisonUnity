@@ -11,7 +11,6 @@ public class Global : MonoBehaviour {
 
     public enum FruitType { Carrot, Peas, Garlic, Broccoli, Spinach, Cucumber, Tomatoe, Strawberry, Corn, Artichoke, Cauliflower, Mushroom, Grapes, Pumkin, Beetroot, SweetPotatoe, Orange, Pear, Cabbage, BrusselSprout };
 
-
     public static Global s;
 
     public SoundManager sounds;
@@ -85,7 +84,7 @@ public class Global : MonoBehaviour {
             case Season.Spring:
                 return "Printemps";
             case Season.Summer:
-                return "Été";
+                return "Ete";
             case Season.Autumn:
                 return "Automne";
             case Season.Winter:
