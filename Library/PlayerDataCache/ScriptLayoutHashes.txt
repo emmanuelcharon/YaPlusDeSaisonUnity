@@ -1,6 +1,6 @@
-OSXStandalone
+Android
 PlayerPath?
-/Users/emmanuelcharon/Documents/YaPlusDeSaison/builds/ClashDesSaisons.app
+/Users/emmanuelcharon/Documents/YaPlusDeSaison/builds/android/ClashDesSaisons.apk
 SceneListBegin?
 Assets/Scenes/Menu.unity
 Assets/Scenes/Main.unity
