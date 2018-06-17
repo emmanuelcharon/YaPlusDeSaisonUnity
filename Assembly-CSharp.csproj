@@ -72,6 +72,9 @@
     <Compile Include="Assets\Scripts\Meta\SoundManager.cs" />
     <Compile Include="Assets\Scripts\NoFruit.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\SceneBackground.cs" />
+    <None Include="Assets\Fonts\DestroyEarth\fontinfo.txt" />
+    <None Include="Assets\Fonts\hurtmold\INFO.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>/Users/emmanuelcharon/Documents/YaPlusDeSaisonUnity/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-    public static int MaxScore = 10;
+    public static int MaxScore = 15;
 
     public Player player1;
     public Player player2;
@@ -15,28 +15,59 @@ public class GameManager : MonoBehaviour {
     public bool playerCanPlay; // false between player turns
 
     [HideInInspector] public int round; 
+    [HideInInspector] public int roundScore; 
+
     [HideInInspector] public Global.Season roundSeason; 
 
     public Text roundText;
-    public Text seasonText;
     public Text roundScorePlayer1;
     public Text roundScorePlayer2;
+    public Text roundScoreText;
     public Text gameScorePlayer1;
     public Text gameScorePlayer2;
+    public Image black;
+
 
     public FruitSpot[] fruitSpots;
     public Text[] fruitNameSpots;
     public GamePrefabs prefabs;
     public NoFruit noFruit;
+    public SceneBackground sceneBackground;
 
     public void Start() {
-        StartGame();
+
+        black.gameObject.SetActive(true);
+
+        iTween.FadeTo(commentatorModal.gameObject, iTween.Hash(
+            "alpha", 0f, "time", 0.1f, "easetype", iTween.EaseType.easeInQuad));
+
+
+        StartCoroutine(StartGame());
     }
 
-    public void StartGame() {
-        
+    public IEnumerator StartGame() {
+
+        yield return new WaitForSeconds(2f);
+
+        commentatorModal.gameObject.SetActive(true);
+
+
+        CommentatorText(new string[] {
+            "Bienvenue au Clash des Saisons!"
+        }, duration: 4f);
+
+        yield return new WaitForSeconds(1f);
+        Global.s.sounds.cheer.Play();
+        yield return new WaitForSeconds(1f);
+       
+
+        iTween.FadeTo(black.gameObject, iTween.Hash(
+           "alpha", 0f, "time", 4.5f, "easetype", iTween.EaseType.linear));
+        yield return new WaitForSeconds(4.5f);
+
         player1.gameScore = 0;
         player2.gameScore = 0;
+        roundScore = 0;
         UpdateGameScoresText();
 
         playerCanPlay = false;
@@ -78,10 +109,10 @@ public class GameManager : MonoBehaviour {
 
     public void setActivePlayer(Player p) {
         activePlayer = p;
-        p.transform.localScale = 1.2f * p.initialScale;
+        //p.transform.localScale = 1.1f * p.initialScale;
 
-        Player op = otherPlayer(p);
-        op.transform.localScale = op.initialScale;
+        //Player op = otherPlayer(p);
+        //op.transform.localScale = op.initialScale;
     }
 
     public Text gameScoreTextForPlayer(Player p)
@@ -100,6 +131,7 @@ public class GameManager : MonoBehaviour {
 	{
         roundScorePlayer1.text = string.Format("{0}", player1.roundScore);
         roundScorePlayer2.text = string.Format("{0}", player2.roundScore);
+        roundScoreText.text = string.Format("{0}", roundScore);
 	}
 
     public void UpdateGameScoresText()
@@ -127,12 +159,14 @@ public class GameManager : MonoBehaviour {
         Global.s.sounds.ChangeMusic(roundSeason);
 
         roundText.text = string.Format("Manche {0}", roundNumber);
-        seasonText.text = string.Format("Saison cette manche: {0}", Global.SeasonName(roundSeason));
+       
+        sceneBackground.setFocus(roundSeason);
 
         if(!keepRoundScores) {
             // reset round scores
             player1.roundScore = 0;
             player2.roundScore = 0;
+            roundScore = 0;
         }
         UpdateRoundScoresText();
 
@@ -142,18 +176,19 @@ public class GameManager : MonoBehaviour {
                 Destroy(fruitSpot.currentFruit.gameObject);
                 fruitSpot.currentFruit = null;
             }
-            fruitSpot.fruitsLeft = 3;
+            fruitSpot.fruitsLeft = 1;
             refillFruitSpot(fruitSpot);
         }
 
         CommentatorText(new string[] {
-            string.Format("Début de la manche {0}", roundNumber),
-            string.Format("Nous sommes {0} {1}", roundSeason == Global.Season.Spring ? "au" : "en",  Global.SeasonName(roundSeason)),
-            string.Format("Le joueur {0} commence !", activePlayerNumber()),
+            string.Format("Manche {0}", roundNumber)//,
+            //string.Format("Nous sommes {0} {1}", roundSeason == Global.Season.Spring ? "au" : "en",  Global.SeasonName(roundSeason)),
+            //string.Format("Le joueur {0} commence !", activePlayerNumber()),
         });
 
 
         playerCanPlay = true;
+        activePlayer.SetFocus(true);
 
     }
 
@@ -171,6 +206,7 @@ public class GameManager : MonoBehaviour {
     public IEnumerator _playerPickedNoFruit()
     {
         playerCanPlay = false;
+        activePlayer.SetFocus(false);
 
         Vector3 targetPos = new Vector3(
             noFruit.transform.position.x,
@@ -198,7 +234,7 @@ public class GameManager : MonoBehaviour {
             Global.s.sounds.boo.Play();
 
             CommentatorText(new string[]{
-                string.Format("Mauvaise réponse! {0} est de saison en {1}.",
+                string.Format("Mauvaise réponse! {0} se mange en {1}.",
                               Global.FruitName(matchingFruitSpots[0].currentFruit.fruitType),
                               Global.SeasonName(roundSeason))
             });
@@ -208,7 +244,8 @@ public class GameManager : MonoBehaviour {
             Player roundWinner = otherPlayer(activePlayer);
 
 
-            for (int i = 0; i < roundWinner.roundScore; i++)
+            //for (int i = 0; i < roundWinner.roundScore; i++)
+            for (int i = 0; i < roundScore; i++)
             {
                 roundWinner.gameScore += 1;
                 UpdateGameScoresText();
@@ -241,12 +278,13 @@ public class GameManager : MonoBehaviour {
             Global.s.sounds.cheer.Play();
 
             CommentatorText(new string[]{
-                string.Format("Bonne réponse! Aucun des fruits n'est de saison en {0}",
-                              Global.SeasonName(roundSeason))
+                string.Format("Bonne réponse!")
+                //string.Format("Bonne réponse! Aucun des fruits n'est de saison en {0}",Global.SeasonName(roundSeason))
             });
             yield return new WaitForSeconds(1f);
 
             activePlayer.roundScore += 2; // bonus points for finding "NoFruit"
+            roundScore += 1;
 
             StartCoroutine(EndRound(null, keepRoundScores: true));
 
@@ -257,6 +295,7 @@ public class GameManager : MonoBehaviour {
 
 	public IEnumerator _playerPickedFruit(FruitGO fruitGO) {
         playerCanPlay = false;
+        activePlayer.SetFocus(false);
         /*
 		iTween.RotateTo(activePlayer.gameObject, iTween.Hash(
 			"z", -15f, "time", 0.25f, "easetype", iTween.EaseType.easeOutBack
@@ -277,6 +316,7 @@ public class GameManager : MonoBehaviour {
 
         FruitSpot fruitSpot = fruitGO.transform.parent.GetComponent<FruitSpot>();
         fruitGO.transform.SetParent(activePlayer.transform);
+        fruitGO.transform.localPosition = fruitGO.transform.localPosition - Vector3.forward;
         fruitSpot.currentFruit = null;
         fruitNameSpot(fruitSpot).text = "";
 
@@ -288,6 +328,7 @@ public class GameManager : MonoBehaviour {
             Global.s.sounds.cheer.Play();
 
             activePlayer.roundScore += 1;
+            roundScore += 1;
 
             iTween.MoveTo(activePlayer.gameObject, iTween.Hash(
                 "position", activePlayer.initialPosition, "time", walkTime, "easetype", iTween.EaseType.linear));
@@ -298,6 +339,9 @@ public class GameManager : MonoBehaviour {
             {
                 fruitSpot.fruitsLeft -= 1;
                 refillFruitSpot(fruitSpot);
+
+            } else {
+                fruitNameSpot(fruitSpot).text = "Epuise";
             }
 
             UpdateRoundScoresText();
@@ -305,12 +349,13 @@ public class GameManager : MonoBehaviour {
             setActivePlayer(otherPlayer(activePlayer));
 
             CommentatorText(new string[] {
-                string.Format("Bonne réponse! Au tour du joueur {0}", activePlayerNumber())
+                string.Format("Bonne réponse!")
+                //string.Format("Bonne réponse! Au tour du joueur {0}", activePlayerNumber())
             });
             yield return new WaitForSeconds(1f);
 
             playerCanPlay = true;
-
+            activePlayer.SetFocus(true);
         }
 
         else {
@@ -319,7 +364,7 @@ public class GameManager : MonoBehaviour {
             Global.s.sounds.boo.Play();
 
             CommentatorText(new string[]{
-                string.Format("Mauvaise réponse! La saison du {0} est en {1}",
+                string.Format("Mauvaise réponse! {0} se mange en {1}",
                               Global.FruitName(fruitGO.fruitType),
                               Global.SeasonName(Global.SeasonForFruit(fruitGO.fruitType)))
             });
@@ -330,7 +375,8 @@ public class GameManager : MonoBehaviour {
             //roundWinner.gameScore += roundWinner.roundScore;
 
 
-            for (int i = 0; i < roundWinner.roundScore; i++)
+            //for (int i = 0; i < roundWinner.roundScore; i++)
+            for (int i = 0; i < roundScore; i++)
             {
                 roundWinner.gameScore += 1;
                 UpdateGameScoresText();

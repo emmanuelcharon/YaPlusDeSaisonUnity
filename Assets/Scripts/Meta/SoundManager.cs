@@ -9,13 +9,14 @@ public class SoundManager : MonoBehaviour {
 
 
     public void ChangeMusic(Global.Season season) {
-
+        /*
         spring.Stop();
         summer.Stop();
         autumn.Stop();
         winter.Stop();
 
         GetMusicForSeason(season).Play();
+        */
     }
 
     AudioSource GetMusicForSeason(Global.Season season)

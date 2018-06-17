@@ -8,10 +8,11 @@ public class FruitSpot : MonoBehaviour {
     public int fruitsLeft;
     public FruitGO currentFruit;
 	
-    public FruitCounter[] fruitCounters;
+    //public FruitCounter[] fruitCounters;
 
     public void displayFruitsLeft()
     {
+        /*
         for (int i = 0; i < fruitCounters.Length; i++)
         {
             if (i < fruitsLeft)
@@ -23,6 +24,7 @@ public class FruitSpot : MonoBehaviour {
                 fruitCounters[i].setEmpty();
             }
         }
+        */
     }
 
 

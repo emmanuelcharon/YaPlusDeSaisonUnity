@@ -106,7 +106,7 @@ public class Global : MonoBehaviour {
             case FruitType.Garlic:
                 return "Ail";
             case FruitType.Broccoli:
-                return "Broccoli";
+                return "Brocoli";
             case FruitType.Spinach:
                 return "Epinard";
             case FruitType.Cucumber:
@@ -118,7 +118,7 @@ public class Global : MonoBehaviour {
             case FruitType.Corn:
                 return "Mais";
             case FruitType.Artichoke:
-                return "Artichaud";
+                return "Artichaut";
             case FruitType.Cauliflower:
                 return "Choux Fleurs";
             case FruitType.Mushroom:
@@ -154,7 +154,7 @@ public class Global : MonoBehaviour {
 
     public static FruitType getRandomFruitBiased(Season currentSeason) {
 
-        if(Random.value < 0.35f) {
+        if(Random.value < 0.25f) {
             var fruitTypes = GetFruitsForSeason(currentSeason);
             return (FruitType) fruitTypes[Random.Range(0, fruitTypes.Count)];
         } else {
