@@ -1,10 +1,11 @@
-Android
+WebGL
 PlayerPath?
-/Users/emmanuelcharon/Documents/YaPlusDeSaison/builds/android/ClashDesSaisons.apk
+/Users/emmanuelcharon/Documents/YaPlusDeSaison/builds/webgl/ClashDesSaisons
 SceneListBegin?
 Assets/Scenes/Menu.unity
 Assets/Scenes/Main.unity
 SceneListEnd?
+c23db450c15807c6b75d25cc3e0fb16e Assembly-CSharp.dll:.SceneBackground
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 cf455f7a806648c6ed4c7d3e3f8a0e03 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 13bdb7c23815c33a33b37b0ba8dd39be UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -122,6 +123,7 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 4996cda505abe005a2c39e7b71c34165 Assembly-CSharp.dll:.FruitSpot
+8c688a8c007807a160ce9a85fd1e62da Assembly-CSharp.dll:.SoundManager
 32e8fe00b63ed946490b898f6024a2f2 Facebook.Unity.Settings.dll:Facebook.Unity.Settings.FacebookSettings
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -158,5 +160,3 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 165befd1a53a892a81e2610e5586a664 Assembly-CSharp.dll:.NoFruit
 a0f84ec16aa554d51669d23170cd9f27 Assembly-CSharp.dll:.MenuManager
 fe58585839d76515374d25f70a1948b9 Assembly-CSharp.dll:.CommentatorModal
-8c688a8c007807a160ce9a85fd1e62da Assembly-CSharp.dll:.SoundManager
-c23db450c15807c6b75d25cc3e0fb16e Assembly-CSharp.dll:.SceneBackground

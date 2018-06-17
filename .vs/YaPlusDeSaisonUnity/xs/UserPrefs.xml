@@ -1,9 +1,9 @@
 ﻿<Properties StartupConfiguration="{9430E732-86D2-3495-9CE3-211C0CF17675}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Meta/Global.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
     <Files>
       <File FileName="Assets/Scripts/Meta/Global.cs" Line="87" Column="28" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="464" Column="25" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="479" Column="6" />
       <File FileName="Assets/Scripts/FruitSpot.cs" Line="8" Column="21" />
       <File FileName="Assets/Scripts/SceneBackground.cs" Line="10" Column="29" />
       <File FileName="Assets/Scripts/Player.cs" Line="8" Column="17" />
