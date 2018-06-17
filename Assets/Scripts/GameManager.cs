@@ -216,6 +216,11 @@ public class GameManager : MonoBehaviour {
 
         iTween.MoveTo(activePlayer.gameObject, iTween.Hash(
             "position", targetPos, "time", walkTime, "easetype", iTween.EaseType.linear));
+
+        iTween.RotateTo(activePlayer.gameObject, iTween.Hash(
+            "position", targetPos, "time", walkTime, "easetype", iTween.EaseType.linear));
+
+
         yield return new WaitForSeconds(walkTime);
 
         yield return new WaitForSeconds(1f);
@@ -432,7 +437,7 @@ public class GameManager : MonoBehaviour {
 
 
         CommentatorText(new string[] {
-            string.Format("Victoire pour {0} avec un score de {1} à {2}",
+            string.Format("Victoire pour {0} avec un score de {1} a {2}",
                           
             winner == player1 ? "Alice" : "Bob",
             winner.gameScore, otherPlayer(winner).gameScore),

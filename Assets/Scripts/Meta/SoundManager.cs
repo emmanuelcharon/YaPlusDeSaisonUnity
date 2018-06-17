@@ -8,6 +8,10 @@ public class SoundManager : MonoBehaviour {
     public AudioSource boo, cheer, crown, money;
 
 
+    public AudioSource menuMusique;
+    public AudioSource showStartsMusic;
+
+
     public void ChangeMusic(Global.Season season) {
         /*
         spring.Stop();

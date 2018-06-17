@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/emmanuelcharon/Documents/YaPlusDeSaisonUnity/Temp/gradleOut/build/intermediates/res/merged/release/drawable-xhdpi/app_icon.png",
+        "source": "/Users/emmanuelcharon/Documents/YaPlusDeSaisonUnity/Temp/gradleOut/src/main/res/drawable-xhdpi/app_icon.png"
+    },
+    {
+        "merged": "/Users/emmanuelcharon/Documents/YaPlusDeSaisonUnity/Temp/gradleOut/build/intermediates/res/merged/release/drawable-xhdpi/app_banner.png",
+        "source": "/Users/emmanuelcharon/Documents/YaPlusDeSaisonUnity/Temp/gradleOut/src/main/res/drawable-xhdpi/app_banner.png"
+    },
+    {
+        "merged": "/Users/emmanuelcharon/Documents/YaPlusDeSaisonUnity/Temp/gradleOut/build/intermediates/res/merged/release/drawable-xhdpi/app_icon_round.png",
+        "source": "/Users/emmanuelcharon/Documents/YaPlusDeSaisonUnity/Temp/gradleOut/src/main/res/drawable-xhdpi/app_icon_round.png"
+    }
+]

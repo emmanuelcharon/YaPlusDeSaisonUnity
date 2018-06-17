@@ -29,6 +29,7 @@ UnityEngine.AudioSource::INTERNAL_CALL_ReadExtensionName
 UnityEngine.AudioSource::INTERNAL_CALL_ReadExtensionPropertyName
 UnityEngine.AudioSource::Play
 UnityEngine.AudioSource::PlayOneShotHelper
+UnityEngine.AudioSource::Stop
 UnityEngine.AudioSource::set_clip
 UnityEngine.AudioSource::set_pitch
 UnityEngine.AudioSource::set_playOnAwake

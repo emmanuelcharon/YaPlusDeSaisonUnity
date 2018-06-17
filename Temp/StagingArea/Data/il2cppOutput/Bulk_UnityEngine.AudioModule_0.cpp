@@ -5028,6 +5028,15 @@ extern "C"  void AudioSource_Play_m48294159 (AudioSource_t3935305588 * __this, c
 		return;
 	}
 }
+// System.Void UnityEngine.AudioSource::Stop()
+extern "C"  void AudioSource_Stop_m2682712816 (AudioSource_t3935305588 * __this, const RuntimeMethod* method)
+{
+	typedef void (*AudioSource_Stop_m2682712816_ftn) (AudioSource_t3935305588 *);
+	static AudioSource_Stop_m2682712816_ftn _il2cpp_icall_func;
+	if (!_il2cpp_icall_func)
+	_il2cpp_icall_func = (AudioSource_Stop_m2682712816_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.AudioSource::Stop()");
+	_il2cpp_icall_func(__this);
+}
 // System.Boolean UnityEngine.AudioSource::get_isPlaying()
 extern "C"  bool AudioSource_get_isPlaying_m1896551654 (AudioSource_t3935305588 * __this, const RuntimeMethod* method)
 {

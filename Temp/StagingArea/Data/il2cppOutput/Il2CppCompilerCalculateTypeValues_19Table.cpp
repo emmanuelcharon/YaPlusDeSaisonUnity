@@ -4393,6 +4393,10 @@ public:
 	AudioSource_t3935305588 * ___crown_8;
 	// UnityEngine.AudioSource SoundManager::money
 	AudioSource_t3935305588 * ___money_9;
+	// UnityEngine.AudioSource SoundManager::menuMusique
+	AudioSource_t3935305588 * ___menuMusique_10;
+	// UnityEngine.AudioSource SoundManager::showStartsMusic
+	AudioSource_t3935305588 * ___showStartsMusic_11;
 
 public:
 	inline static int32_t get_offset_of_spring_2() { return static_cast<int32_t>(offsetof(SoundManager_t2102329059, ___spring_2)); }
@@ -4465,6 +4469,24 @@ public:
 	{
 		___money_9 = value;
 		Il2CppCodeGenWriteBarrier((&___money_9), value);
+	}
+
+	inline static int32_t get_offset_of_menuMusique_10() { return static_cast<int32_t>(offsetof(SoundManager_t2102329059, ___menuMusique_10)); }
+	inline AudioSource_t3935305588 * get_menuMusique_10() const { return ___menuMusique_10; }
+	inline AudioSource_t3935305588 ** get_address_of_menuMusique_10() { return &___menuMusique_10; }
+	inline void set_menuMusique_10(AudioSource_t3935305588 * value)
+	{
+		___menuMusique_10 = value;
+		Il2CppCodeGenWriteBarrier((&___menuMusique_10), value);
+	}
+
+	inline static int32_t get_offset_of_showStartsMusic_11() { return static_cast<int32_t>(offsetof(SoundManager_t2102329059, ___showStartsMusic_11)); }
+	inline AudioSource_t3935305588 * get_showStartsMusic_11() const { return ___showStartsMusic_11; }
+	inline AudioSource_t3935305588 ** get_address_of_showStartsMusic_11() { return &___showStartsMusic_11; }
+	inline void set_showStartsMusic_11(AudioSource_t3935305588 * value)
+	{
+		___showStartsMusic_11 = value;
+		Il2CppCodeGenWriteBarrier((&___showStartsMusic_11), value);
 	}
 };
 
@@ -5724,7 +5746,7 @@ extern const int32_t g_FieldOffsetTable1955[2] =
 	MenuManager_t2761117704_StaticFields::get_offset_of_U3CU3Ef__amU24cache0_3(),
 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1956 = { sizeof (SoundManager_t2102329059), -1, 0, 0 };
-extern const int32_t g_FieldOffsetTable1956[8] = 
+extern const int32_t g_FieldOffsetTable1956[10] = 
 {
 	SoundManager_t2102329059::get_offset_of_spring_2(),
 	SoundManager_t2102329059::get_offset_of_summer_3(),
@@ -5734,6 +5756,8 @@ extern const int32_t g_FieldOffsetTable1956[8] =
 	SoundManager_t2102329059::get_offset_of_cheer_7(),
 	SoundManager_t2102329059::get_offset_of_crown_8(),
 	SoundManager_t2102329059::get_offset_of_money_9(),
+	SoundManager_t2102329059::get_offset_of_menuMusique_10(),
+	SoundManager_t2102329059::get_offset_of_showStartsMusic_11(),
 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1957 = { sizeof (NoFruit_t4021142403), -1, 0, 0 };
 extern const int32_t g_FieldOffsetTable1957[1] = 

@@ -8516,6 +8516,7 @@ AudioSource_get_clip_m1234340632	UnityEngine.AudioClip UnityEngine.AudioSource::
 AudioSource_set_clip_m31653938	System.Void UnityEngine.AudioSource::set_clip(UnityEngine.AudioClip)	UnityEngine.AudioModule
 AudioSource_Play_m3389845180	System.Void UnityEngine.AudioSource::Play(System.UInt64)	UnityEngine.AudioModule
 AudioSource_Play_m48294159	System.Void UnityEngine.AudioSource::Play()	UnityEngine.AudioModule
+AudioSource_Stop_m2682712816	System.Void UnityEngine.AudioSource::Stop()	UnityEngine.AudioModule
 AudioSource_get_isPlaying_m1896551654	System.Boolean UnityEngine.AudioSource::get_isPlaying()	UnityEngine.AudioModule
 AudioSource_PlayOneShot_m1688286683	System.Void UnityEngine.AudioSource::PlayOneShot(UnityEngine.AudioClip)	UnityEngine.AudioModule
 AudioSource_PlayOneShot_m2678069419	System.Void UnityEngine.AudioSource::PlayOneShot(UnityEngine.AudioClip,System.Single)	UnityEngine.AudioModule

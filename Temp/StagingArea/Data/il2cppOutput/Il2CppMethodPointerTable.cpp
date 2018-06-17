@@ -8537,6 +8537,7 @@ extern "C" void AudioSource_get_clip_m1234340632 ();
 extern "C" void AudioSource_set_clip_m31653938 ();
 extern "C" void AudioSource_Play_m3389845180 ();
 extern "C" void AudioSource_Play_m48294159 ();
+extern "C" void AudioSource_Stop_m2682712816 ();
 extern "C" void AudioSource_get_isPlaying_m1896551654 ();
 extern "C" void AudioSource_PlayOneShot_m1688286683 ();
 extern "C" void AudioSource_PlayOneShot_m2678069419 ();
@@ -10799,7 +10800,7 @@ extern "C" void SceneBackground_getBackgroundForSeason_m1619599345 ();
 extern "C" void SoundManager__ctor_m1311707663 ();
 extern "C" void SoundManager_ChangeMusic_m2848301844 ();
 extern "C" void SoundManager_GetMusicForSeason_m3336867948 ();
-extern const Il2CppMethodPointer g_MethodPointers[10780] = 
+extern const Il2CppMethodPointer g_MethodPointers[10781] = 
 {
 	Locale_GetText_m3374010885,
 	Locale_GetText_m1601577974,
@@ -19319,6 +19320,7 @@ extern const Il2CppMethodPointer g_MethodPointers[10780] =
 	AudioSource_set_clip_m31653938,
 	AudioSource_Play_m3389845180,
 	AudioSource_Play_m48294159,
+	AudioSource_Stop_m2682712816,
 	AudioSource_get_isPlaying_m1896551654,
 	AudioSource_PlayOneShot_m1688286683,
 	AudioSource_PlayOneShot_m2678069419,

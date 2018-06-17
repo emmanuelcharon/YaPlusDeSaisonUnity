@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/emmanuelcharon/Documents/YaPlusDeSaisonUnity/Temp/gradleOut/libs/unity-classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e11e14bc1194514e74b50b3bfc7849d26334a549">
+        <dex dex="/Users/emmanuelcharon/Documents/YaPlusDeSaisonUnity/Temp/gradleOut/build/intermediates/pre-dexed/release/unity-classes_e0d3a798dff52707cf0412cdd9aa4ba1cf761c4b.jar" />
+    </item>
+
+</items>
